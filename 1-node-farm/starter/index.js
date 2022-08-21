@@ -7,3 +7,5 @@ console.log(textIn)
 const textOut = `This is what we know about the avocado: ${textIn}\nCreated on ${Date.now()}`;
 fs.writeFileSync('./txt/output.txt', textOut);
 console.log('File written!');
+
+//Escape callback hell
