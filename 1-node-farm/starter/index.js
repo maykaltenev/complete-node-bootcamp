@@ -5,6 +5,7 @@ const slugify = require('slugify');
 
 const replaceTemplate = require('./modules/replaceTemplate');
 
+const port = process.env.PORT || 8080;
 // FILES
 // const textIn = fs.readFileSync('./txt/input.txt', 'utf-8');
 // console.log(textIn)
@@ -77,7 +78,7 @@ const server = http.createServer((req, res) => {
     }
 });
 
-server.listen(8000, '127.0.0.1', () => {
-    console.log('Listening to request on port 8000');
+server.listen(port, () => {
+    console.log(`Listening to request on port ${port}`);
 })
 
