@@ -22,7 +22,7 @@ const sendErrorDev = (err, res) => {
         stack: err.stack
     });
 };
-
+const handleJsonWEbTokenError = err => new AppError('Invalid token. Please log in again', 401)
 const sendErrorProd = (err, res) => {
     // Operational, trusted error: send message to client
     if (err.isOperational) {
@@ -53,6 +53,7 @@ module.exports = (err, req, res, next) => {
         if (err.name === 'CastError') error = handleCastErrorDB(err);
         if (err.code === 11000) error = handleDuplicateFieldsDB(err);
         if (err.name === 'ValidationError') error = handleValidationErrorDB(err);
+        if (err.name === 'JsonWebTokenError') error = handleJsonWEbTokenError(err);
         sendErrorProd(error, res)
     }
 }
